@@ -57,8 +57,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 	
-	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	int32 Score;
+	/*UPROPERTY(EditAnywhere,BlueprintReadWrite)
+	int32 Score;*/
 
 	
 	

@@ -14,6 +14,9 @@ class AFirstPersonGameMode : public AGameModeBase
 public:
 	AFirstPersonGameMode();
 
+	void PrintScore();
+protected:
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };
 
 

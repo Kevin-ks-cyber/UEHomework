@@ -50,7 +50,7 @@ void AFirstPersonProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherAc
 		//GEngine->AddOnScreenDebugMessage(-1,10,FColor::Red,HitComp->GetOwner()->GetName());
 		//GEngine->AddOnScreenDebugMessage(-1,10,FColor::Red,this->GetOwner()->GetName().Append("子弹owner"));
 		//GEngine->AddOnScreenDebugMessage(-1,10,FColor::Red,this->GetOwner()->GetOwner()->GetName().Append("Rifle Owner"));
-		GetWorldTimerManager().SetTimer(TimerHandle_DelayedDestroy, this, &AFirstPersonProjectile::DestroyBullet, 0.1f, false);
+		GetWorldTimerManager().SetTimer(TimerHandle_DelayedDestroy, this, &AFirstPersonProjectile::DestroyBullet, 0.01f, false);
 		//Destroy();
 	}
 }

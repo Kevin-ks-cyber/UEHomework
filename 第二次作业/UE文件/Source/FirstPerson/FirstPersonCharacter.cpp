@@ -10,6 +10,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
+#include "Game/FirstPersonPlayerState.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -35,8 +36,7 @@ AFirstPersonCharacter::AFirstPersonCharacter()
 	Mesh1P->CastShadow = false;
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
-
-	Score = 0;
+	
 
 }
 
@@ -46,6 +46,7 @@ void AFirstPersonCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -100,11 +101,23 @@ void AFirstPersonCharacter::Look(const FInputActionValue& Value)
 
 int32 AFirstPersonCharacter::GetScore()
 {
-	return Score;
+	AFirstPersonPlayerState* FirstPlayerState =  Cast<AFirstPersonPlayerState>(GetPlayerState());
+	if (FirstPlayerState!= nullptr)
+	{
+		return FirstPlayerState->GetPlayerScore();
+	}else
+	{
+		return 0;
+	}
 }
 
 void AFirstPersonCharacter::SetScore(int32 NewScore)
 {
-	Score = NewScore;
+	AFirstPersonPlayerState* FirstPlayerState =  Cast<AFirstPersonPlayerState>(GetPlayerState());
+	if (FirstPlayerState!= nullptr)
+	{
+		 FirstPlayerState->SetPlayerScore(NewScore);
+	}
+	
 	
 }
